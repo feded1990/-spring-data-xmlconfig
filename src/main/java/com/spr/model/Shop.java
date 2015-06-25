@@ -20,7 +20,7 @@ public class Shop {
 	private String name;
 
     @OneToOne()
-    @JoinColumn(name="employees_number")
+    @JoinColumn(name = "employees_number")
 	private Employee employee;
 
 	public Integer getId() {

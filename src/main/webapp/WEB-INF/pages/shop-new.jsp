@@ -10,25 +10,35 @@
 <body>
 <h1>New Shop page</h1>
 <form:form method="POST" commandName="shop" action="${pageContext.request.contextPath}/shop/create.html" >
-<table>
-<tbody>
-<tr>
-<td>Shop name:</td>
-<td><form:input path="name" /></td>
-<td><form:errors path="name" cssStyle="color: red;"/></td>
-</tr>
-<tr>
-<td>Employees number:</td>
-<td><form:input path="empoyee.id" /></td>
-<td><form:errors path="empoyee.id" cssStyle="color: red;"/></td>
-</tr>
-<tr>
-<td><input type="submit" value="Create" /></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+    <table>
+        <tbody>
+            <tr>
+                <td>Shop name:</td>
+                <td><form:input path="name" /></td>
+                <td><form:errors path="name" cssStyle="color: red;"/></td>
+            </tr>
+            <tr>
+                <td>Employees number:</td>
+                <td><form:input path="employee.id" /></td>
+                <td><form:errors path="employee.id" cssStyle="color: red;"/></td>
+            </tr>
+            <tr>
+                <td>Employees name:</td>
+                <td><form:input path="employee.name" /></td>
+                <td><form:errors path="employee.name" cssStyle="color: red;"/></td>
+            </tr>
+            <tr>
+                <td>Employees last name:</td>
+                <td><form:input path="employee.lastName" /></td>
+                <td><form:errors path="employee.lastName" cssStyle="color: red;"/></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Create" /></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
 </form:form>
 <a href="${pageContext.request.contextPath}/">Home page</a>
 </body>

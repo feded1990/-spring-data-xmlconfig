@@ -110,8 +110,8 @@ public class ShopController {
 	@RequestMapping(value="/edit/{id}", method=RequestMethod.POST)
 	public ModelAndView editShop(@ModelAttribute @Valid Shop shop,
 			BindingResult result,
-			@PathVariable Integer id,
-			final RedirectAttributes redirectAttributes) throws ShopNotFound {
+			@PathVariable Integer id
+			) throws ShopNotFound {
 		
 		if (result.hasErrors())
 			return new ModelAndView("shop-edit");
@@ -121,7 +121,6 @@ public class ShopController {
 
 		shopService.update(shop);
 		
-		redirectAttributes.addFlashAttribute("message", message);	
 		return mav;
 	}
 	

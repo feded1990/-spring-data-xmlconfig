@@ -14,6 +14,11 @@
         <tbody>
             <tr>
                 <td>Shop name:</td>
+                <td><form:input path="id" value="${shop.id}"/></td>
+                <td><form:errors path="id" cssStyle="color: red;"/></td>
+            </tr>
+            <tr>
+                <td>Shop name:</td>
                 <td><form:input path="name" /></td>
                 <td><form:errors path="name" cssStyle="color: red;"/></td>
             </tr>
@@ -33,7 +38,7 @@
                 <td><form:errors path="employee.lastName" cssStyle="color: red;"/></td>
             </tr>
             <tr>
-                <td><input type="submit" value="Update" /></td>
+                <td><input type="submit" value="Create" /></td>
                 <td></td>
                 <td></td>
             </tr>

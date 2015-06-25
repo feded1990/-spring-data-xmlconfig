@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.spr.model.Employee;
+import com.spr.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,11 +19,14 @@ public class ShopServiceImpl implements ShopService {
 	@Resource
 	private ShopRepository shopRepository;
 
+    @Resource
+    private EmployeeRepository employeeRepository;
+
 	@Override
 	@Transactional
 	public Shop create(Shop shop) {
 		Shop createdShop = shop;
-		return shopRepository.save(createdShop);
+		return shopRepository.save(shop);
 	}
 	
 	@Override
@@ -52,14 +57,19 @@ public class ShopServiceImpl implements ShopService {
 	@Transactional(rollbackFor=ShopNotFound.class)
 	public Shop update(Shop shop) throws ShopNotFound {
 		Shop updatedShop = shopRepository.findOne(shop.getId());
-		
+        Employee employee;
 		if (updatedShop == null)
 			throw new ShopNotFound();
 		
 		updatedShop.setName(shop.getName());
         updatedShop.getEmployee().setId(shop.getEmployee().getId());
-        updatedShop.getEmployee().setName(shop.getEmployee().getName());
-        updatedShop.getEmployee().setLastName(shop.getEmployee().getLastName());
+
+        employee = employeeRepository.findOne(shop.getEmployee().getId());
+
+        employee.setLastName(shop.getEmployee().getLastName());
+        employee.setName(shop.getEmployee().getName());
+        employeeRepository.save(employee);
+        shopRepository.save(updatedShop);
 		return updatedShop;
 	}
 
