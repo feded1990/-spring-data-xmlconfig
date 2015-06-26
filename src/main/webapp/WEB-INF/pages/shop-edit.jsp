@@ -10,13 +10,9 @@
 <body>
 <h1>Edit Shop page</h1>
 <form:form method="POST" commandName="shop" action="${pageContext.request.contextPath}/shop/edit/${shop.id}.html" >
+    <form:input path="id" type="hidden" value="${shop.id}"/>
     <table>
         <tbody>
-            <tr>
-                <td>Shop name:</td>
-                <td><form:input path="id" value="${shop.id}"/></td>
-                <td><form:errors path="id" cssStyle="color: red;"/></td>
-            </tr>
             <tr>
                 <td>Shop name:</td>
                 <td><form:input path="name" /></td>

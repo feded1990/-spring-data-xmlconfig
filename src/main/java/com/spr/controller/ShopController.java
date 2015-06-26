@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.spr.exception.EmployeeNotFound;
+import com.spr.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -28,6 +30,9 @@ public class ShopController {
 	
 	@Autowired
 	private ShopService shopService;
+
+    @Autowired
+    private EmployeeService employeeService;
 	
 	@Autowired
 	private ShopValidator shopValidator;
@@ -111,7 +116,7 @@ public class ShopController {
 	public ModelAndView editShop(@ModelAttribute @Valid Shop shop,
 			BindingResult result,
 			@PathVariable Integer id
-			) throws ShopNotFound {
+			) throws ShopNotFound, EmployeeNotFound {
 		
 		if (result.hasErrors())
 			return new ModelAndView("shop-edit");
@@ -120,7 +125,8 @@ public class ShopController {
 		String message = "Shop was successfully updated.";
 
 		shopService.update(shop);
-		
+        employeeService.update(shop.getEmployee());
+
 		return mav;
 	}
 	

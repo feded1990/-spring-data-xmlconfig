@@ -1,12 +1,7 @@
 package com.spr.model;
 
-import org.springframework.data.annotation.Reference;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity

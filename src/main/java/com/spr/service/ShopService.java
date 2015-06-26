@@ -2,6 +2,7 @@ package com.spr.service;
 
 import java.util.List;
 
+import com.spr.exception.EmployeeNotFound;
 import com.spr.exception.ShopNotFound;
 import com.spr.model.Shop;
 
