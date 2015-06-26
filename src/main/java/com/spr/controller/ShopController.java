@@ -50,20 +50,19 @@ public class ShopController {
 	
 	@RequestMapping(value="/create", method=RequestMethod.POST)
 	public ModelAndView createNewShop(@ModelAttribute @Valid Shop shop,
-			BindingResult result,
-			final RedirectAttributes redirectAttributes) {
+			BindingResult result) {
 		
 		if (result.hasErrors())
 			return new ModelAndView("shop-new");
 		
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView("index");
 		String message = "New shop "+shop.getName()+" was successfully created.";
-		
+        mav.addObject("messageSuc", message);
+
+        employeeService.create(shop.getEmployee());
 		shopService.create(shop);
-		mav.setViewName("redirect:/index.html");
-				
-		redirectAttributes.addFlashAttribute("message", message);	
-		return mav;		
+
+		return mav;
 	}
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
@@ -121,8 +120,8 @@ public class ShopController {
 		if (result.hasErrors())
 			return new ModelAndView("shop-edit");
 		
-		ModelAndView mav = new ModelAndView("redirect:/index.html");
-		String message = "Shop was successfully updated.";
+		ModelAndView mav = new ModelAndView("index");
+		mav.addObject("messageSuc", "Shop was successfully updated.");
 
 		shopService.update(shop);
         employeeService.update(shop.getEmployee());

@@ -9,6 +9,8 @@
 <body>
 <h1>Home page</h1>
 <p>
+${messageSuc}
+<br><br><br>
 Welcome to "Shop application".<br/>
 <i>${message}</i><br/>
 <a href="${pageContext.request.contextPath}/shop/create.html">Create a new shop</a><br/>
